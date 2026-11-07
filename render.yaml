@@ -1,0 +1,21 @@
+# Render Blueprint. In Render: New > Blueprint > pick this repo.
+# Sprint 2 adds a second service (production) with its own database.
+services:
+  - type: web
+    name: noble-shape-staging
+    runtime: python
+    plan: free
+    branch: main
+    autoDeployTrigger: commit # Sprint 2: switch to checksPass so only green CI deploys
+    buildCommand: ./build.sh
+    startCommand: gunicorn config.wsgi:application --bind 0.0.0.0:$PORT --log-file -
+    healthCheckPath: /healthz
+    envVars:
+      - key: DEBUG
+        value: "False"
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        sync: false # paste the Neon staging connection string in the dashboard
+      - key: WEB_CONCURRENCY
+        value: "2"

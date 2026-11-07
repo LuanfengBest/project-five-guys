@@ -1,0 +1,22 @@
+# Secrets: never commit real env files
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+
+# Django
+staticfiles/
+db.sqlite3
+media/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
