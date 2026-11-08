@@ -1,5 +1,7 @@
 # Admit Compass (team noble-shape, MGT 656)
 
+Staging: https://noble-shape-staging.onrender.com (free plan; first request after idle takes ~1 min)
+
 Build a college shortlist from federal College Scorecard data, then ask
 questions about it. Django + PostgreSQL, deployed on Render with a Neon
 database.
